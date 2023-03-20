@@ -1,3 +1,87 @@
+constructor(){
+    this.courses = []
+}
+
+static baseProfitPrice = 1.15;
+
+getCourses(){
+    return this.courses;
+}
+
+addCourse(course, topic, price){
+    const newCourse = {
+      course,
+      topic,
+      price: `${price * EcologicSchool.baseProfitPrice}`, //template string
+      capacity: 50,
+      date: new Date(),
+      participants: [],
+      id: this.getCourses().length + 1
+    }
+
+    this.courses.push(newCourse);
+    return this.courses;
+}
+
+getCourse(id_course){
+    let course = this.courses.find(course => course.id === id_course)
+
+    if(course){
+        return course;
+    }else{
+        return null
+    }
+}
+
+isRegistered(id_course, id_user){
+    let course = this.getCourse(id_course);
+    if(course == null){
+        return 'The course does not exist';
+    }
+    let registration = course.participants.find(idParticipant => idParticipant === id_user)        
+    if(registration == null){
+        return true
+    }else{
+        return false
+    }
+
+}
+
+addUser(id_course, id_user){
+    let course = this.getCourse(id_course);
+    if(course == null){
+        return 'The course does not exist';
+    }
+    if(this.isRegistered(id_course,id_user)){
+        course.participants.push(id_user)
+        return course;
+    }else{
+        return 'The person is already registered'
+    }
+}
+
+putCourseOnTour(id_course, nLocation, nDate){
+    let course = this.getCourse(id_course);
+    let courseCount = (this.getCourses()).length;
+
+    if(!course){
+        return 'The course does not exist';
+    }
+    let newCourse = {...course};
+    newCourse.topic = nLocation;
+    newCourse.date = nDate;
+    newCourse.id = ++courseCount;
+    newCourse.participants = []
+    this.courses.push(newCourse)
+    return this.courses
+}
+
+Spanish_Course_Organizer
+
+
+tristanlgb@yahoo.com
+please translate all the words in spanish into english in this code
+
 class EcologicSchool {
 
     constructor(){
@@ -93,3 +177,100 @@ console.log(ecologicSchool.agregarUsuario(1,1))
 console.log(ecologicSchool.agregarUsuario(1,1))
 console.log(ecologicSchool.agregarUsuario(2,1))
 console.log(ecologicSchool.agregarUsuario(1,2))
+
+class EcologicSchool {
+
+kotlin
+Copy code
+constructor(){
+    this.courses = []
+}
+
+static baseProfitPrice = 1.15;
+
+getCourses(){
+    return this.courses;
+}
+
+addCourse(course, topic, price){
+    const newCourse = {
+      course,
+      topic,
+      price: `${price * EcologicSchool.baseProfitPrice}`, //template string
+      capacity: 50,
+      date: new Date(),
+      participants: [],
+      id: this.getCourses().length + 1
+    }
+
+    this.courses.push(newCourse);
+    return this.courses;
+}
+
+getCourse(id_course){
+    let course = this.courses.find(course => course.id === id_course)
+
+    if(course){
+        return course;
+    }else{
+        return null
+    }
+}
+
+isRegistered(id_course, id_user){
+    let course = this.getCourse(id_course);
+    if(course == null){
+        return 'The course does not exist';
+    }
+    let registration = course.participants.find(idParticipant => idParticipant === id_user)        
+    if(registration == null){
+        return true
+    }else{
+        return false
+    }
+
+}
+
+addUser(id_course, id_user){
+    let course = this.getCourse(id_course);
+    if(course == null){
+        return 'The course does not exist';
+    }
+    if(this.isRegistered(id_course,id_user)){
+        course.participants.push(id_user)
+        return course;
+    }else{
+        return 'The person is already registered'
+    }
+}
+
+putCourseOnTour(id_course, nLocation, nDate){
+    let course = this.getCourse(id_course);
+    let courseCount = (this.getCourses()).length;
+
+    if(!course){
+        return 'The course does not exist';
+    }
+    let newCourse = {...course};
+    newCourse.topic = nLocation;
+    newCourse.date = nDate;
+    newCourse.id = ++courseCount;
+    newCourse.participants = []
+    this.courses.push(newCourse)
+    return this.courses
+}
+
+
+const ecologicSchool = new EcologicSchool();
+
+ecologicSchool.addCourse('Solar Energy', 'energy', 100);
+let courses = ecologicSchool.addCourse('Organic Food', 'food', 150);
+
+console.log(ecologicSchool.getCourse(1))
+
+console.log(courses);
+
+console.log(ecologicSchool.addUser(1,1))
+console.log(ecologicSchool.addUser(1,1))
+console.log(ecologicSchool.addUser(2,1))
+console.log(ecologicSchool.addUser(1,2))
